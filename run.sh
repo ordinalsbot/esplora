@@ -120,6 +120,11 @@ if [ -n "$ENABLE_LIGHTMODE" ]; then
     ELECTRS_ARGS="$ELECTRS_ARGS --lightmode"
 fi
 
+if [ -n "$UTXOS_LIMIT" ]; then
+    ELECTRS_ARGS="$ELECTRS_ARGS --utxos-limit $UTXOS_LIMIT"
+    echo "Setting UTXOS_LIMIT to $UTXOS_LIMIT"
+fi
+
 if [ "$TEMPLATE" == "blockstream" ]; then
   d=/srv/explorer/source/flavors/blockstream
   ONION_URL=$(source $d/config.env && echo $ONION_V3)
