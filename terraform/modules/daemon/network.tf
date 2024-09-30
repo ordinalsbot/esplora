@@ -32,7 +32,7 @@ resource "google_compute_backend_service" "daemon" {
   protocol    = "HTTP"
   port_name   = "http"
   timeout_sec = 3600
-  enable_cdn  = true
+  enable_cdn  = false
   
   security_policy = var.name == "bitcoin-mainnet" ? "https://www.googleapis.com/compute/v1/projects/${var.project}/global/securityPolicies/esplora-block-rule" : "" # TODO: add to TF
 
@@ -53,15 +53,6 @@ resource "google_compute_backend_service" "daemon" {
     }
   }
 
-  dynamic "backend" {
-    for_each = google_compute_region_instance_group_manager.preemptible-daemon
-    iterator = group
-    content {
-      group           = group.value.instance_group
-      max_utilization = 0.8
-    }
-  }
-
   health_checks = [google_compute_http_health_check.daemon[0].self_link]
   count         = var.create_resources
 }
@@ -74,15 +65,6 @@ resource "google_compute_backend_service" "daemon-electrs" {
 
   dynamic "backend" {
     for_each = google_compute_region_instance_group_manager.daemon
-    iterator = group
-    content {
-      group           = group.value.instance_group
-      max_utilization = 0.8
-    }
-  }
-
-  dynamic "backend" {
-    for_each = google_compute_region_instance_group_manager.preemptible-daemon
     iterator = group
     content {
       group           = group.value.instance_group
