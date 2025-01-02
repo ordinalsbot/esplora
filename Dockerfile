@@ -1,4 +1,4 @@
-FROM blockstream/esplora-base:latest AS build
+FROM blockstream/esplora-base:5d9e6d738eef370311f501dede83464a3bc0b046 AS build
 
 FROM debian:bullseye@sha256:4d6ab716de467aad58e91b1b720f0badd7478847ec7a18f66027d0f8a329a43c
 
