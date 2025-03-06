@@ -8,3 +8,4 @@ listen=1
 mempoolfullrbf=1
 blocknotify=pkill -USR1 electrs
 maxmempool=2048
+minrelaytxfee=0.00000100
