@@ -1,3 +1,5 @@
+rpcuser=ordbot 
+rpcpassword=ordbot
 testnet=1
 [test]
 server=1
