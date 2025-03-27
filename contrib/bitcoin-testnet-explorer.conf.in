@@ -1,6 +1,7 @@
+testnet=1
 rpcuser=ordbot 
 rpcpassword=ordbot
-testnet=1
+
 [test]
 server=1
 peerbloomfilters=0
@@ -12,3 +13,5 @@ mempoolfullrbf=1
 blocknotify=pkill -USR1 electrs
 maxmempool=2048
 minrelaytxfee=0.00000100
+rpcbind=0.0.0.0
+rpcport=18332
