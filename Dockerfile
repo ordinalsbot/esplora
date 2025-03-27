@@ -1,6 +1,6 @@
 FROM blockstream/esplora-base:5d9e6d738eef370311f501dede83464a3bc0b046 AS build
 
-FROM debian:bullseye@sha256:4d6ab716de467aad58e91b1b720f0badd7478847ec7a18f66027d0f8a329a43c
+FROM debian:bookworm-slim
 
 COPY --from=build /srv/explorer /srv/explorer
 COPY --from=build /srv/wally_wasm /srv/wally_wasm
@@ -20,9 +20,7 @@ WORKDIR /srv/explorer/source
 
 SHELL ["/bin/bash", "-c"]
 
-# required to run some scripts as root (needed for docker)
 RUN source /root/.nvm/nvm.sh \
- && npm config set unsafe-perm true \
  && npm install && (cd prerender-server && npm run dist) \
  && DEST=/srv/explorer/static/bitcoin-mainnet \
     npm run dist -- bitcoin-mainnet \
