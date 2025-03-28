@@ -1,6 +1,4 @@
 signet=1
-rpcuser=ordbot 
-rpcpassword=ordbot
 [signet]
 server=1
 peerbloomfilters=0
