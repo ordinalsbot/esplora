@@ -1,7 +1,4 @@
 signet=1
-rpcuser=ordbot 
-rpcpassword=ordbot
-
 [signet]
 server=1
 peerbloomfilters=0
@@ -13,5 +10,3 @@ mempoolfullrbf=1
 blocknotify=pkill -USR1 electrs
 maxmempool=2048
 minrelaytxfee=0.00000100
-rpcbind=0.0.0.0
-rpcport=38332
