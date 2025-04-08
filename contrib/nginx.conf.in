@@ -18,8 +18,8 @@ map $limit $limit_key {
     1 $http_x_forwarded_for;
 }
 
-limit_req_zone $limit_key zone=lightlimitzone:10m rate=20000r/s;
-limit_req_zone $limit_key zone=heavylimitzone:10m rate=2000r/s;
+limit_req_zone $limit_key zone=lightlimitzone:10m rate=2000000r/s;
+limit_req_zone $limit_key zone=heavylimitzone:10m rate=200000r/s;
 limit_conn_zone $binary_remote_addr zone=conn_limit_per_ip:10m;
 
 limit_req_status 429;
